@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { SvgXml } from "react-native-svg";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -16,20 +16,20 @@ import {
   Icon,
   Address,
 } from "./restaurant-info-card.styles";
+import { GlobalContext } from "../../../service/restaurants/restaurants.context";
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant }) => { 
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-    ],
+    ], 
     address = "100 some random street",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
   } = restaurant;
-
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
@@ -40,7 +40,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Section>
           <Rating>
             {ratingArray.map((item, index) => (
-              <SvgXml xml={star} width={20} height={20} key={index}/>
+              <SvgXml xml={star} width={20} height={20} key={index} />
             ))}
           </Rating>
           <SectionEnd>

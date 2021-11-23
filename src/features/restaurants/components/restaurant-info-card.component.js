@@ -15,10 +15,9 @@ import {
   Rating,
   Icon,
   Address,
-} from "./restaurant-info-card.styles";
-import { GlobalContext } from "../../../service/restaurants/restaurants.context";
+} from "./restaurant-info-card.styles"; 
 
-export const RestaurantInfoCard = ({ restaurant }) => { 
+export const RestaurantInfoCard = ({ restaurant }) => {  
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -39,8 +38,8 @@ export const RestaurantInfoCard = ({ restaurant }) => {
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map((item, index) => (
-              <SvgXml xml={star} width={20} height={20} key={index} />
+            {ratingArray.map((_, i) => (
+              <SvgXml xml={star} width={20} height={20} key={i} />
             ))}
           </Rating>
           <SectionEnd>

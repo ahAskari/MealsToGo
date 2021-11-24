@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { useTheme } from "styled-components/native";
 
-
 const sizeVariant = {
   small: 1,
   medium: 2,
@@ -24,7 +23,7 @@ const getVariant = (position, size, theme) => {
 };
 
 const SpacerView = styled.View`
-  ${({variant}) => variant};
+  ${({ variant }) => variant};
 `;
 
 export const Spacer = ({ position, size, children }) => {

@@ -25,7 +25,7 @@ export const LocationContextProvider = ({ children }) => {
         setError(err);
         setIsloading(false);
       });
-  }, [keyword])
+  }, [keyword]);
 
   return (
     <LocationContext.Provider
@@ -40,5 +40,5 @@ export const LocationContextProvider = ({ children }) => {
       {children}
     </LocationContext.Provider>
 
-  )
+  );
 };

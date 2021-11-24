@@ -6,10 +6,10 @@ export const locationRequest = (searchTerm) => {
     const locationMock = locations[searchTerm];
     if (!locationMock) {
       reject("not found!");
-    };
+    }
     resolve(locationMock);
-  });
-};
+  })
+}
 
 export const locationTransform = (result) => {
   const formattedResponse = camelize(result);

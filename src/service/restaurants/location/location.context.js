@@ -12,9 +12,9 @@ export const LocationContextProvider = ({ children }) => {
   const onSearch = (searchKeyword) => {
     setIsloading(true);
     setKeyword(searchKeyword);
-  }; 
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     keyword && locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then(res => {

@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { RestaurantsContext } from "../../../service/restaurants/restaurants.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 3;
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { Search } from "../components/search.component";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -21,11 +22,11 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 const Loading = styled(ActivityIndicator)`
-  marginLeft: -25px;
+  margin-left: -25px;
 `;
 
-export const RestaurantsScreen = () => {
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+export const RestaurantsScreen = ({ navigation }) => {
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
@@ -39,9 +40,17 @@ export const RestaurantsScreen = () => {
         data={restaurants}
         renderItem={({ item }) => {
           return (
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard restaurant={item} />
-            </Spacer>
+            <Pressable
+              onPress={() =>
+                navigation.navigate("RestaurantDetailScreen", {
+                  restaurant: item,
+                })
+              }
+            >
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </Pressable>
           );
         }}
         keyExtractor={(item) => item.name}

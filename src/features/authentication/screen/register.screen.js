@@ -1,10 +1,82 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useContext, useState } from "react";
+import { Text } from "../../../components/typography/text.component";
+import { TextInput } from "react-native-paper";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import {
+  AccountBackground,
+  AccountCover,
+  AuthButton,
+  AuthInput,
+  AccountContainer,
+  ErrorContainer,
+  Title,
+} from "../components/account.styles";
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({ navigation }) => {
+  const { onRegister, error } = useContext(AuthenticationContext);
+  const [password, setPassword] = useState("");
+  const [repeatedPassword, setRepeatedPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   return (
-    <View>
-      <Text>Login or Register</Text>
-    </View>
+    <AccountBackground>
+      <AccountCover />
+      <Title> Meals To Go </Title>
+      <AccountContainer>
+        <Spacer size="large" position="bottom">
+          <AuthInput
+            label="E-mail"
+            type="outlined"
+            value={email}
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            onChangeText={(text) => setEmail(text)}
+          />
+        </Spacer>
+        <Spacer size="large" position="bottom">
+          <AuthInput
+            label="Password"
+            textContentType="password"
+            type="outlined"
+            secureTextEntry
+            autoCapitalize="none"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </Spacer>
+        <Spacer size="large" position="bottom">
+          <AuthInput
+            label="Repeat Password"
+            textContentType="password"
+            type="outlined"
+            secureTextEntry
+            autoCapitalize="none"
+            value={repeatedPassword}
+            onChangeText={(text) => setRepeatedPassword(text)}
+          />
+        </Spacer>
+        {error && (
+          <ErrorContainer size="large">
+            <Text variant="error">{error}</Text>
+          </ErrorContainer>
+        )}
+        <AuthButton
+          mode="contained"
+          icon="lock-open-outline"
+          onPress={() => {
+            onRegister(email, password, repeatedPassword);
+          }}
+        >
+          Register
+        </AuthButton>
+      </AccountContainer>
+      <Spacer size="large">
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+          Back
+        </AuthButton>
+      </Spacer>
+    </AccountBackground>
   );
 };

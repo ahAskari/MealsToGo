@@ -42,7 +42,6 @@ export const LoginScreen = ({ navigation }) => {
             type="outlined"
             secureTextEntry={showPassword}
             autoCapitalize="none"
-            secure
             right={
               <TextInput.Icon
                 name="eye"
@@ -65,14 +64,14 @@ export const LoginScreen = ({ navigation }) => {
             onLogin(email, password);
           }}
         >
-          login
+          Login
         </AuthButton>
-        <Spacer size="large">
-          <AuthButton mode="contained" onPress={() => navigation.goBack()}>
-            Back
-          </AuthButton>
-        </Spacer>
       </AccountContainer>
+      <Spacer size="large">
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+          Back
+        </AuthButton>
+      </Spacer>
     </AccountBackground>
   );
 };

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { SafeArea } from "../../components/utility/safe-area.component";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/map/screen/map.screen";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 const TAB_ICON = {
   restaurant: "md-restaurant",
   map: "md-map",
@@ -23,17 +24,19 @@ const screenOptions = ({ route }) => ({
   headerShown: false,
 });
 
-const Setting = () => (
-  <SafeArea>
-    <Text>Setting</Text>
-  </SafeArea>
-);
 const Tab = createBottomTabNavigator();
 // options={{
 //   tabBarBadge: 12,
 //   tabBarBadgeStyle: { backgroundColor: 'red' }
 // }}
 export const AppNavigator = () => {
+  const { user } = useContext(AuthenticationContext);
+
+  const Setting = () => (
+    <SafeArea>
+      <Text>{user.user.providerData[0].email}</Text>
+    </SafeArea>
+  );
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="restaurant" component={RestaurantsNavigator} />

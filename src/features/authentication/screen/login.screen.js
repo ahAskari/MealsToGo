@@ -9,9 +9,11 @@ import {
   AuthButton,
   AuthInput,
   AccountContainer,
+  ErrorContainer,
+  Title,
 } from "../components/account.styles";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const { onLogin, error } = useContext(AuthenticationContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,6 +22,7 @@ export const LoginScreen = () => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Title> Meals To Go </Title>
       <AccountContainer>
         <Spacer size="large" position="bottom">
           <AuthInput
@@ -51,9 +54,9 @@ export const LoginScreen = () => {
           />
         </Spacer>
         {error && (
-          // <ErrorContainer size="large">
+          <ErrorContainer size="large">
             <Text variant="error">{error}</Text>
-          // </ErrorContainer>
+          </ErrorContainer>
         )}
         <AuthButton
           mode="contained"
@@ -64,6 +67,11 @@ export const LoginScreen = () => {
         >
           login
         </AuthButton>
+        <Spacer size="large">
+          <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+            Back
+          </AuthButton>
+        </Spacer>
       </AccountContainer>
     </AccountBackground>
   );

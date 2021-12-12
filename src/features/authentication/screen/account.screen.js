@@ -1,4 +1,5 @@
 import React from "react";
+import { Title } from "react-native-paper";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import {
@@ -12,6 +13,7 @@ export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Title> Meals To Go </Title>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"

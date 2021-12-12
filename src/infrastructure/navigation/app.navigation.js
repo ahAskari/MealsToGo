@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { SafeArea } from "../../components/utility/safe-area.component";
@@ -36,12 +35,10 @@ const Tab = createBottomTabNavigator();
 // }}
 export const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name="restaurant" component={RestaurantsNavigator} />
-        <Tab.Screen name="map" component={MapScreen} />
-        <Tab.Screen name="setting" component={Setting} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen name="restaurant" component={RestaurantsNavigator} />
+      <Tab.Screen name="map" component={MapScreen} />
+      <Tab.Screen name="setting" component={Setting} />
+    </Tab.Navigator>
   );
 };

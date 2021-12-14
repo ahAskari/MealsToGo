@@ -8,7 +8,6 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
 import { RestaurantList as FavouritesList } from "../../restaurants/components/restaurant-list.component";
 
- 
 const NoFavouritesArea = styled(SafeArea)`
   align-items: center;
   justify-content: center;

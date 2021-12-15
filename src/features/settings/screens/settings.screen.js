@@ -35,9 +35,15 @@ export const SettingsScreen = ({ navigation }) => {
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo && (
-            <Avatar.Icon size={180} icon="human" backgroundColor="#448FD9" />
+            <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
           )}
-          {photo && <Avatar.Image size={180} source={{ uri: photo }} />}
+          {photo && (
+            <Avatar.Image
+              size={180}
+              source={{ uri: photo }}
+              backgroundColor="#2182BD"
+            />
+          )}
         </TouchableOpacity>
         <Spacer position="top" size="large">
           <Text variant="label">{user.email}</Text>
